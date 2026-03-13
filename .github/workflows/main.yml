@@ -14,20 +14,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install ClawHub skill
         run: npx clawhub@latest install verified-agent-identity
 
       - name: Install script dependencies
         run: |
-          if [ -d "scripts" ]; then
-            cd scripts
-            npm install
-          else
-            echo "scripts folder not found"
-            exit 1
-          fi
+          cd scripts
+          npm install
 
       - name: Create new Ethereum Identity
         run: node scripts/createNewEthereumIdentity.js
