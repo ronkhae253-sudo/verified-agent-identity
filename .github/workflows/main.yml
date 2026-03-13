@@ -14,13 +14,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
 
-      - name: Install ClawHub CLI
-        run: npm install -g clawhub
-
-      - name: Install Verified Agent Identity
-        run: clawhub install verified-agent-identity
+      - name: Install ClawHub skill
+        run: npx clawhub@latest install verified-agent-identity
 
       - name: Install script dependencies
         run: |
@@ -32,7 +29,7 @@ jobs:
             exit 1
           fi
 
-      - name: Create Ethereum Identity
+      - name: Create new Ethereum Identity
         run: node scripts/createNewEthereumIdentity.js
 
       - name: Link Human to Agent
